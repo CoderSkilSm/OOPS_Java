@@ -1,3 +1,4 @@
+// Compile time polymorphism
 class Main{
     //data 
     private int a; 
@@ -29,3 +30,73 @@ class Main{
         // System.out.println("Sum: " + obj.sum(3.2,3.3));// Error 
     }
 }
+// Runtime Polymorphism
+class A{
+    public void display(){
+        System.out.println("Inside A display"); 
+    }
+    public void show(){
+        System.out.println("Inside A show"); 
+    }
+}
+
+class B extends A {
+    public void display(){
+        System.out.println("Inside B display"); 
+    }
+    public void show(){
+        System.out.println("Inside B show"); 
+    }
+}
+
+
+class C extends B{
+    public void display(){
+        System.out.println("Inside C display"); 
+    }
+    public void show(){
+        System.out.println("Inside C show"); 
+    }
+}
+class Main{
+    public static void main(String args[]){
+        A obj; 
+        obj = new C(); 
+        obj.show(); // C version 
+        obj = new B(); 
+        obj.show(); // B version
+        C obj1; 
+        obj1 = new B(); 
+        obj1.show(); // error
+        B obj2; 
+        obj2 = new C(); 
+        obj2.display(); // C version
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
